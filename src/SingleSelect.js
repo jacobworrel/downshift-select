@@ -3,17 +3,22 @@ import Downshift from 'downshift'
 import React from 'react'
 
 import {
-  filterItemList,
   itemToString,
 } from './util';
 
 import {
-  inputStyle,
+  selectionStyle,
+  truncateStyle,
+  getControllerWrapperStyle,
   getMenuStyle,
   getListItemStyle,
 } from './style';
 
-const SingleSelect = ({ itemList, height }) => (
+const SingleSelect = ({
+  itemList,
+  height = 40,
+  placeholder = 'Select...'
+}) => (
   <Downshift
     onChange={selection => console.log(`You selected ${JSON.stringify(selection)}`)}
     itemToString={itemToString}
@@ -30,8 +35,9 @@ const SingleSelect = ({ itemList, height }) => (
       selectedItem,
     }) => (
       <div style={{ width: '100%', height }}>
-        <div style={{ position: 'relative', height }}>
-          <input {...getInputProps({ isOpen, placeHolder: 'Select...' })} style={inputStyle} />
+        <div {...getToggleButtonProps()} style={getControllerWrapperStyle({ height })}>
+          <div style={selectionStyle}>{selectedItem ? selectedItem.name : placeholder }</div>
+          {/*<input {...getInputProps({ isOpen, placeHolder: 'Select...' })} style={inputStyle} />*/}
           <ControllerButton
             clearSelection={clearSelection}
             getToggleButtonProps={getToggleButtonProps}
@@ -42,7 +48,7 @@ const SingleSelect = ({ itemList, height }) => (
         <div style={{ position: 'relative' }}>
           <ul {...getMenuProps()} style={getMenuStyle({ isOpen })}>
             {isOpen
-              ? filterItemList(itemList, inputValue).map((item, index) => (
+              ? /*filterItemList(itemList, inputValue)*/itemList.map((item, index) => (
                 <li
                   {...getItemProps({
                     key: item.name,

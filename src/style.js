@@ -2,7 +2,6 @@ const borderColor = 'rgba(34,36,38,.15)';
 
 export const inputStyle = {
   width: '100%',
-  fontSize: 14,
   wordWrap: 'break-word',
   lineHeight: '1em',
   outline: 0,
@@ -17,6 +16,31 @@ export const inputStyle = {
   border: `1px solid ${borderColor}`,
   // transition: 'box-shadow .1s ease,width .1s ease',
 };
+
+const truncateStyle = {
+  wordWrap: 'break-word',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
+};
+
+export const selectionStyle = {
+  width: '75%',
+  fontSize: 16,
+  ...truncateStyle,
+};
+
+export function getControllerWrapperStyle ({ height }) {
+  return {
+    height,
+    cursor: 'pointer',
+    position: 'relative',
+    border: `1px solid ${borderColor}`,
+    display: 'flex',
+    alignItems: 'center',
+    paddingLeft: '1em',
+  };
+}
 
 const sharedButtonStyle = {
   backgroundColor: 'transparent',
@@ -67,23 +91,13 @@ export function getMenuStyle ({ isOpen }) {
 export function getListItemStyle ({ isActive, isSelected, height }) {
   return {
     background: isActive || isSelected ? 'rgba(0,0,0,.03)' : 'inherit',
-    border: 'none',
-    borderTop: 'none',
-    boxShadow: 'none',
     boxSizing: 'border-box',
-    color: 'rgba(0,0,0,.87)',
     cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',
-    fontSize: '1rem',
-    fontWeight: '400',
     height,
-    lineHeight: '1em',
     padding: '0 1em',
     position: 'relative',
-    textAlign: 'left',
-    textTransform: 'none',
-    whiteSpace: 'normal',
-    wordWrap: 'normal',
+    ...truncateStyle,
   }
 }

@@ -28,10 +28,7 @@ const ControllerButton = ({
         </button>
       </div>
     ) : (
-      <button
-        {...getToggleButtonProps()}
-        style={arrowButtonStyle}
-      >
+      <button style={arrowButtonStyle}>
         <ArrowIcon isOpen={isOpen}/>
       </button>
     )}
