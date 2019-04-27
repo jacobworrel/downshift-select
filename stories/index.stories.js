@@ -15,15 +15,17 @@ storiesOf('SingleSelect', module)
   .add('Default', () => {
     return (
       <div>
-        <div style={{ width: 250, height: 40 }}>
+        <div style={{ width: 250 }}>
           <SingleSelect
             itemList={itemList}
+            height={40}
           />
         </div>
         {/*<hr />*/}
-        {/*<div style={{ width: 500, height: 26 }}>*/}
+        {/*<div style={{ width: 500 }}>*/}
           {/*<SingleSelect*/}
             {/*itemList={itemList}*/}
+            {/*height={26}*/}
           {/*/>*/}
         {/*</div>*/}
       </div>
