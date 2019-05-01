@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import {
   arrowButtonStyle,
   xButtonStyle,
@@ -14,14 +14,16 @@ const ControllerButton = ({
     {selectedItem ? (
       <div>
         <button
-          onClick={clearSelection}
+          onClick={useCallback(
+            (e) => handleClose(e, clearSelection),
+            [clearSelection]
+          )}
           aria-label="clear selection"
           style={xButtonStyle}
         >
           <XIcon />
         </button>
         <button
-          {...getToggleButtonProps()}
           style={arrowButtonStyle}
         >
           <ArrowIcon isOpen={isOpen}/>
@@ -34,6 +36,11 @@ const ControllerButton = ({
     )}
   </React.Fragment>
 );
+
+function handleClose (e, clearSelection) {
+  clearSelection();
+  e.stopPropagation();
+}
 
 const XIcon = () => {
   return (
