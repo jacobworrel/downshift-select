@@ -7,22 +7,17 @@ import {
 const ControllerButton = ({
   clearSelection,
   getToggleButtonProps,
+  isClearable,
   isOpen,
   selectedItem
 }) => (
   <React.Fragment>
     {selectedItem ? (
       <div>
-        <button
-          onClick={useCallback(
-            (e) => handleClose(e, clearSelection),
-            [clearSelection]
-          )}
-          aria-label="clear selection"
-          style={xButtonStyle}
-        >
-          <XIcon />
-        </button>
+        <ClearButton
+          clearSelection={clearSelection}
+          isClearable={isClearable}
+        />
         <button
           style={arrowButtonStyle}
         >
@@ -41,6 +36,25 @@ function handleClose (e, clearSelection) {
   clearSelection();
   e.stopPropagation();
 }
+
+const ClearButton = ({ isClearable, clearSelection }) => (
+  <React.Fragment>
+    {
+      isClearable && (
+        <button
+          onClick={useCallback(
+            (e) => handleClose(e, clearSelection),
+            [clearSelection]
+          )}
+          aria-label="clear selection"
+          style={xButtonStyle}
+        >
+          <XIcon />
+        </button>
+      )
+    }
+  </React.Fragment>
+);
 
 const XIcon = () => {
   return (

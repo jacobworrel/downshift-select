@@ -22,7 +22,17 @@ storiesOf('SingleSelect', module)
       </div>
     )
   })
-  .add('Searchable', () => {
+  .add('isClearable = false', () => {
+    return (
+      <div style={{ width: 250 }}>
+        <SingleSelect
+          itemList={itemList}
+          isClearable={false}
+        />
+      </div>
+    )
+  })
+  .add('isSearchable = true', () => {
     return (
       <div style={{ width: 250 }}>
         <SingleSelect

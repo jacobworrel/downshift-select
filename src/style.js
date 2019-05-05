@@ -1,4 +1,5 @@
 const borderColor = 'rgba(34,36,38,.15)';
+const fontSize = 14;
 
 export const inputStyle = {
   width: '100%',
@@ -7,14 +8,12 @@ export const inputStyle = {
   outline: 0,
   whiteSpace: 'normal',
   height: '100%',
-  // background: '#fff',
   display: 'inline-block',
-  padding: '0 1em',
   boxSizing: 'border-box',
   border: 'none',
-  // color: 'rgba(0,0,0,.87)',
-  // boxShadow: 'none',
-  // transition: 'box-shadow .1s ease,width .1s ease',
+  fontSize,
+  boxShadow: 'none',
+  transition: 'box-shadow .1s ease,width .1s ease',
 };
 
 const truncateStyle = {
@@ -26,7 +25,7 @@ const truncateStyle = {
 
 export const selectionStyle = {
   width: '75%',
-  fontSize: 16,
+  fontSize,
   ...truncateStyle,
 };
 
@@ -90,11 +89,12 @@ export function getMenuStyle ({ isOpen }) {
 
 export function getListItemStyle ({ isActive, isSelected, height }) {
   return {
+    alignItems: 'center',
     background: isActive || isSelected ? 'rgba(0,0,0,.03)' : 'inherit',
     boxSizing: 'border-box',
     cursor: 'pointer',
     display: 'flex',
-    alignItems: 'center',
+    fontSize,
     height,
     padding: '0 1em',
     position: 'relative',

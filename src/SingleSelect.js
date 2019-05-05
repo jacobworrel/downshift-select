@@ -2,11 +2,9 @@ import ControllerButton from './ControllerButon';
 import Downshift from 'downshift'
 import Menu from './Menu';
 import React from 'react'
-
 import {
   itemToString,
 } from './util';
-
 import {
   getControllerWrapperStyle,
   inputStyle,
@@ -14,8 +12,9 @@ import {
 } from './style';
 
 const SingleSelect = ({
-  itemList,
-  isSearchable,
+  itemList = [],
+  isClearable = true,
+  isSearchable = false,
   height = 40,
   placeholder = 'Select...',
 }) => (
@@ -42,7 +41,11 @@ const SingleSelect = ({
         >
           {
             isSearchable ? (
-              <input {...getInputProps({ isOpen, placeHolder: 'Select...' })} style={inputStyle} />
+              <input
+                {...getInputProps({ isOpen, placeHolder: 'Select...' })}
+                autoFocus
+                style={inputStyle}
+              />
             ) : (
               <div style={selectionStyle}>{selectedItem ? selectedItem.name : placeholder }</div>
             )
@@ -50,6 +53,7 @@ const SingleSelect = ({
           <ControllerButton
             clearSelection={clearSelection}
             getToggleButtonProps={getToggleButtonProps}
+            isClearable={isClearable}
             isOpen={isOpen}
             selectedItem={selectedItem}
           />
