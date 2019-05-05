@@ -17,6 +17,17 @@ storiesOf('SingleSelect', module)
       <div style={{ width: 250 }}>
         <SingleSelect
           itemList={itemList}
+          isSearchable={false}
+        />
+      </div>
+    )
+  })
+  .add('Searchable', () => {
+    return (
+      <div style={{ width: 250 }}>
+        <SingleSelect
+          itemList={itemList}
+          isSearchable={true}
         />
       </div>
     )

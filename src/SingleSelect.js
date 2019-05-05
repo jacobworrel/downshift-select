@@ -1,5 +1,6 @@
 import ControllerButton from './ControllerButon';
 import Downshift from 'downshift'
+import Menu from './Menu';
 import React from 'react'
 
 import {
@@ -7,17 +8,16 @@ import {
 } from './util';
 
 import {
-  selectionStyle,
-  truncateStyle,
   getControllerWrapperStyle,
-  getMenuStyle,
-  getListItemStyle,
+  inputStyle,
+  selectionStyle,
 } from './style';
 
 const SingleSelect = ({
   itemList,
+  isSearchable,
   height = 40,
-  placeholder = 'Select...'
+  placeholder = 'Select...',
 }) => (
   <Downshift
     onChange={selection => console.log(`You selected ${JSON.stringify(selection)}`)}
@@ -36,8 +36,13 @@ const SingleSelect = ({
     }) => (
       <div style={{ width: '100%', height }}>
         <div {...getToggleButtonProps()} style={getControllerWrapperStyle({ height })}>
-          <div style={selectionStyle}>{selectedItem ? selectedItem.name : placeholder }</div>
-          {/*<input {...getInputProps({ isOpen, placeHolder: 'Select...' })} style={inputStyle} />*/}
+          {
+            isSearchable ? (
+              <input {...getInputProps({ isOpen, placeHolder: 'Select...' })} style={inputStyle} />
+            ) : (
+              <div style={selectionStyle}>{selectedItem ? selectedItem.name : placeholder }</div>
+            )
+          }
           <ControllerButton
             clearSelection={clearSelection}
             getToggleButtonProps={getToggleButtonProps}
@@ -46,26 +51,15 @@ const SingleSelect = ({
           />
         </div>
         <div style={{ position: 'relative' }}>
-          <ul {...getMenuProps()} style={getMenuStyle({ isOpen })}>
-            {isOpen
-              ? /*filterItemList(itemList, inputValue)*/itemList.map((item, index) => (
-                <li
-                  {...getItemProps({
-                    key: item.name,
-                    index,
-                    item,
-                  })}
-                  style={getListItemStyle({
-                    isActive: highlightedIndex === index,
-                    isSelected: selectedItem === item,
-                    height,
-                  })}
-                >
-                  {item.name}
-                </li>
-              ))
-              : null}
-          </ul>
+          <Menu
+            getItemProps={getItemProps}
+            getMenuProps={getMenuProps}
+            highlightedIndex={highlightedIndex}
+            isOpen={isOpen}
+            itemList={itemList}
+            selectedItem={selectedItem}
+            height={height}
+          />
         </div>
       </div>
     )}

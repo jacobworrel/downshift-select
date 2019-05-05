@@ -7,13 +7,13 @@ export const inputStyle = {
   outline: 0,
   whiteSpace: 'normal',
   height: '100%',
-  background: '#fff',
+  // background: '#fff',
   display: 'inline-block',
   padding: '0 1em',
   boxSizing: 'border-box',
-  color: 'rgba(0,0,0,.87)',
-  boxShadow: 'none',
-  border: `1px solid ${borderColor}`,
+  border: 'none',
+  // color: 'rgba(0,0,0,.87)',
+  // boxShadow: 'none',
   // transition: 'box-shadow .1s ease,width .1s ease',
 };
 
