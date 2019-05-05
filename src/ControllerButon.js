@@ -18,16 +18,16 @@ const ControllerButton = ({
           clearSelection={clearSelection}
           isClearable={isClearable}
         />
-        <button
-          style={arrowButtonStyle}
-        >
-          <ArrowIcon isOpen={isOpen}/>
-        </button>
+        <ToggleButton
+          isOpen={isOpen}
+          getToggleButtonProps={getToggleButtonProps}
+        />
       </div>
     ) : (
-      <button style={arrowButtonStyle}>
-        <ArrowIcon isOpen={isOpen}/>
-      </button>
+      <ToggleButton
+        isOpen={isOpen}
+        getToggleButtonProps={getToggleButtonProps}
+      />
     )}
   </React.Fragment>
 );
@@ -54,6 +54,20 @@ const ClearButton = ({ isClearable, clearSelection }) => (
       )
     }
   </React.Fragment>
+);
+
+const ToggleButton = ({ isOpen, getToggleButtonProps }) => (
+  <button
+    {...getToggleButtonProps({
+      onClick (e) {
+        // prevents parent div from calling toggleMenu again onClick
+        e.stopPropagation();
+      }
+    })}
+    style={arrowButtonStyle}
+  >
+    <ArrowIcon isOpen={isOpen}/>
+  </button>
 );
 
 const XIcon = () => {

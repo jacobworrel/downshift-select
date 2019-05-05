@@ -7,8 +7,7 @@ import {
 } from './util';
 import {
   getControllerWrapperStyle,
-  inputStyle,
-  selectionStyle,
+  getInputStyle,
 } from './style';
 
 const SingleSelect = ({
@@ -39,17 +38,14 @@ const SingleSelect = ({
           onClick={toggleMenu}
           style={getControllerWrapperStyle({ height })}
         >
-          {
-            isSearchable ? (
-              <input
-                {...getInputProps({ isOpen, placeHolder: 'Select...' })}
-                autoFocus
-                style={inputStyle}
-              />
-            ) : (
-              <div style={selectionStyle}>{selectedItem ? selectedItem.name : placeholder }</div>
-            )
-          }
+          <input
+            {...getInputProps({
+              autoFocus: true,
+              placeholder,
+              readOnly: !isSearchable,
+            })}
+            style={getInputStyle({ isSearchable })}
+          />
           <ControllerButton
             clearSelection={clearSelection}
             getToggleButtonProps={getToggleButtonProps}

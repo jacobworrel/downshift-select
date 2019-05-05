@@ -65,7 +65,7 @@ storiesOf('SingleSelect', module)
 
     return (
       <div style={{ width: 250 }}>
-        Ellipsis not working list items.
+        Janky. Need to fix.
         <SingleSelect
           itemList={itemList}
           placeholder="Placeholder dkfjdkjfkdjfkjdkfjkdjfkdjfkjdkfjkdjfkjdkfjkdjfkjkdjfkjdkfj"

@@ -1,33 +1,31 @@
 const borderColor = 'rgba(34,36,38,.15)';
 const fontSize = 14;
 
-export const inputStyle = {
-  width: '100%',
-  wordWrap: 'break-word',
-  lineHeight: '1em',
-  outline: 0,
-  whiteSpace: 'normal',
-  height: '100%',
-  display: 'inline-block',
-  boxSizing: 'border-box',
-  border: 'none',
-  fontSize,
-  boxShadow: 'none',
-  transition: 'box-shadow .1s ease,width .1s ease',
-};
-
 const truncateStyle = {
-  wordWrap: 'break-word',
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
+  wordWrap: 'break-word',
 };
 
-export const selectionStyle = {
-  width: '75%',
-  fontSize,
-  ...truncateStyle,
-};
+export function getInputStyle ({ isSearchable }) {
+  return {
+    border: 'none',
+    boxShadow: 'none',
+    boxSizing: 'border-box',
+    cursor: isSearchable ? 'text' : 'pointer',
+    display: 'inline-block',
+    fontSize,
+    height: '100%',
+    lineHeight: '1em',
+    outline: 0,
+    paddingLeft: '1em',
+    marginRight: '25%',
+    transition: 'box-shadow .1s ease,width .1s ease',
+    width: '100%',
+    ...truncateStyle,
+  };
+}
 
 export function getControllerWrapperStyle ({ height }) {
   return {
@@ -37,7 +35,6 @@ export function getControllerWrapperStyle ({ height }) {
     border: `1px solid ${borderColor}`,
     display: 'flex',
     alignItems: 'center',
-    paddingLeft: '1em',
   };
 }
 
@@ -98,6 +95,7 @@ export function getListItemStyle ({ isActive, isSelected, height }) {
     height,
     padding: '0 1em',
     position: 'relative',
+    width: '100%',
     ...truncateStyle,
   }
 }
