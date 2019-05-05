@@ -32,10 +32,14 @@ const SingleSelect = ({
       isOpen,
       inputValue,
       highlightedIndex,
+      toggleMenu,
       selectedItem,
     }) => (
       <div style={{ width: '100%', height }}>
-        <div {...getToggleButtonProps()} style={getControllerWrapperStyle({ height })}>
+        <div
+          onClick={toggleMenu}
+          style={getControllerWrapperStyle({ height })}
+        >
           {
             isSearchable ? (
               <input {...getInputProps({ isOpen, placeHolder: 'Select...' })} style={inputStyle} />
@@ -55,7 +59,9 @@ const SingleSelect = ({
             getItemProps={getItemProps}
             getMenuProps={getMenuProps}
             highlightedIndex={highlightedIndex}
+            inputValue={inputValue}
             isOpen={isOpen}
+            isSearchable={isSearchable}
             itemList={itemList}
             selectedItem={selectedItem}
             height={height}

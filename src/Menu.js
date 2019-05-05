@@ -1,5 +1,9 @@
 import React from 'react';
-import { getListItemStyle, getMenuStyle } from './style';
+import { filterItemList } from './util';
+import {
+  getListItemStyle,
+  getMenuStyle,
+} from './style';
 
 const Menu = ({
   getMenuProps,
@@ -11,10 +15,12 @@ const Menu = ({
   isSearchable,
   itemList,
   selectedItem,
-}) => (
-  <ul {...getMenuProps()} style={getMenuStyle({ isOpen })}>
-    {isOpen
-      ? /*filterItemList(itemList, inputValue)*/itemList.map((item, index) => (
+}) => {
+  itemList = isSearchable ? filterItemList(itemList, inputValue) : itemList;
+  return (
+    <ul {...getMenuProps()} style={getMenuStyle({ isOpen })}>
+      {isOpen
+        ? itemList.map((item, index) => (
         <li
           {...getItemProps({
             key: item.name,
@@ -29,9 +35,10 @@ const Menu = ({
         >
           {item.name}
         </li>
-      ))
-      : null}
-  </ul>
-);
+        ))
+        : null}
+    </ul>
+  );
+};
 
 export default Menu;
