@@ -38,32 +38,6 @@ export function getControllerWrapperStyle ({ height }) {
   };
 }
 
-const sharedButtonStyle = {
-  backgroundColor: 'transparent',
-  border: 'none',
-  position: 'absolute',
-  top: 0,
-  cursor: 'pointer',
-  width: 30,
-  display: 'flex',
-  flexDirection: 'column',
-  height: '100%',
-  justifyContent: 'center',
-  alignItems: 'center',
-  outline: 0,
-  padding: 0,
-};
-
-export const arrowButtonStyle = {
-  ...sharedButtonStyle,
-  right: 10,
-};
-
-export const xButtonStyle = {
-  ...sharedButtonStyle,
-  right: 30,
-};
-
 export function getMenuStyle ({ isOpen }) {
   return {
     backgroundColor: 'white',
@@ -97,5 +71,22 @@ export function getListItemStyle ({ isActive, isSelected, height }) {
     position: 'relative',
     width: '100%',
     ...truncateStyle,
+  }
+}
+
+const valueAndPlaceholderStyle = {
+  position: 'absolute',
+  left: '1em',
+};
+
+export function getValueStyle () {
+  return {
+    ...valueAndPlaceholderStyle,
+  };
+}
+
+export function getPlaceholderStyle () {
+  return {
+    ...valueAndPlaceholderStyle,
   }
 }

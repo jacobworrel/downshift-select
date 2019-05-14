@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import {
   arrowButtonStyle,
   xButtonStyle,
-} from './style';
+} from './ControllerButton.style';
 
 const ControllerButton = ({
   clearSelection,
@@ -100,6 +100,6 @@ const ArrowIcon = ({ isOpen }) => {
       <path d="M1,6 L10,15 L19,6" />
     </svg>
   )
-}
+};
 
 export default ControllerButton;
