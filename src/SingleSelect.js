@@ -48,7 +48,7 @@ const SingleSelect = ({
         <div style={{ width: '100%', height }}>
           <div
             onClick={toggleMenu}
-            style={getControllerWrapperStyle({ height })}
+            style={getControllerWrapperStyle({ height, isDisabled })}
           >
             <Placeholder
               selectedItem={selectedItem}
@@ -64,7 +64,7 @@ const SingleSelect = ({
                 autoFocus: true,
                 readOnly: !isSearchable,
               })}
-              style={getInputStyle({ isSearchable })}
+              style={getInputStyle({ isDisabled, isSearchable })}
             />
             <ControllerButton
               clearSelection={clearSelection}

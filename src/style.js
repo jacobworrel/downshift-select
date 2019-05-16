@@ -1,4 +1,5 @@
 const borderColor = 'rgba(34,36,38,.15)';
+const greyLight0 = '#f9f9f9';
 const fontSize = 14;
 
 const truncateStyle = {
@@ -8,8 +9,9 @@ const truncateStyle = {
   wordWrap: 'break-word',
 };
 
-export function getInputStyle ({ isSearchable }) {
+export function getInputStyle ({ isDisabled, isSearchable }) {
   return {
+    background: isDisabled ? greyLight0 : 'inherit',
     border: 'none',
     boxShadow: 'none',
     boxSizing: 'border-box',
@@ -27,9 +29,10 @@ export function getInputStyle ({ isSearchable }) {
   };
 }
 
-export function getControllerWrapperStyle ({ height }) {
+export function getControllerWrapperStyle ({ height, isDisabled }) {
   return {
     height,
+    background: isDisabled ? greyLight0 : 'inherit',
     cursor: 'pointer',
     position: 'relative',
     border: `1px solid ${borderColor}`,
