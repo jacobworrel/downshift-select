@@ -10,6 +10,7 @@ const Menu = ({
   getItemProps,
   height,
   highlightedIndex,
+  isDisabled,
   isOpen,
   inputValue,
   isSearchable,
@@ -18,8 +19,8 @@ const Menu = ({
 }) => {
   itemList = isSearchable ? filterItemList(itemList, inputValue) : itemList;
   return (
-    <ul {...getMenuProps()} style={getMenuStyle({ isOpen })}>
-      {isOpen
+    <ul {...getMenuProps()} style={getMenuStyle({ isDisabled, isOpen })}>
+      {isOpen && !isDisabled
         ? itemList.map((item, index) => (
         <li
           {...getItemProps({

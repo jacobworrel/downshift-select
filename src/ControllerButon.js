@@ -8,11 +8,12 @@ const ControllerButton = ({
   clearSelection,
   getToggleButtonProps,
   isClearable,
+  isDisabled,
   isOpen,
   selectedItem
 }) => (
   <React.Fragment>
-    {selectedItem ? (
+    {selectedItem && !isDisabled ? (
       <div>
         <ClearButton
           clearSelection={clearSelection}
@@ -25,6 +26,7 @@ const ControllerButton = ({
       </div>
     ) : (
       <ToggleButton
+        isDisabled={isDisabled}
         isOpen={isOpen}
         getToggleButtonProps={getToggleButtonProps}
       />
@@ -56,7 +58,7 @@ const ClearButton = ({ isClearable, clearSelection }) => (
   </React.Fragment>
 );
 
-const ToggleButton = ({ isOpen, getToggleButtonProps }) => (
+const ToggleButton = ({ isDisabled, isOpen, getToggleButtonProps }) => (
   <button
     {...getToggleButtonProps({
       onClick (e) {
@@ -66,7 +68,10 @@ const ToggleButton = ({ isOpen, getToggleButtonProps }) => (
     })}
     style={arrowButtonStyle}
   >
-    <ArrowIcon isOpen={isOpen}/>
+    <ArrowIcon
+      isDisabled={isDisabled}
+      isOpen={isOpen}
+    />
   </button>
 );
 
@@ -86,7 +91,7 @@ const XIcon = () => {
   )
 };
 
-const ArrowIcon = ({ isOpen }) => {
+const ArrowIcon = ({ isDisabled, isOpen }) => {
   return (
     <svg
       viewBox="0 0 20 20"
@@ -95,7 +100,7 @@ const ArrowIcon = ({ isOpen }) => {
       fill="transparent"
       stroke="#979797"
       strokeWidth="1.1px"
-      transform={isOpen ? 'rotate(180)' : undefined}
+      transform={isOpen && !isDisabled ? 'rotate(180)' : undefined}
     >
       <path d="M1,6 L10,15 L19,6" />
     </svg>

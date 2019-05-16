@@ -42,6 +42,16 @@ storiesOf('SingleSelect', module)
       </div>
     )
   })
+  .add('isDisabled = true', () => {
+  return (
+    <div style={{ width: 250 }}>
+      <SingleSelect
+        itemList={itemList}
+        isDisabled={true}
+      />
+    </div>
+  )
+})
   .add('Size Variants', () => {
     return (
       <div style={{ width: 250 }}>

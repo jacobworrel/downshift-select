@@ -38,12 +38,12 @@ export function getControllerWrapperStyle ({ height }) {
   };
 }
 
-export function getMenuStyle ({ isOpen }) {
+export function getMenuStyle ({ isDisabled, isOpen }) {
   return {
     backgroundColor: 'white',
     borderColor,
     borderStyle: 'solid',
-    borderWidth: isOpen ? '0 1px 1px 1px' : '0 0 0 0',
+    borderWidth: isOpen && !isDisabled ? '0 1px 1px 1px' : '0 0 0 0',
     boxShadow: '0 2px 3px 0 rgba(34,36,38,.15)',
     boxSizing: 'border-box',
     marginTop: 0,

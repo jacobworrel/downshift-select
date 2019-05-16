@@ -16,9 +16,11 @@ const SingleSelect = ({
   defaultInputValue = '',
   itemList = [],
   isClearable = true,
+  isDisabled = false,
   isSearchable = false,
   height = 40,
   placeholder = 'Select...',
+  ...rest,
 }) => {
   const [ inputValue, setInputValue ] = useState(defaultInputValue);
 
@@ -29,6 +31,7 @@ const SingleSelect = ({
       onSelect={() => setInputValue('')}
       inputValue={inputValue}
       itemToString={itemToString}
+      {...rest}
     >
       {({
         clearSelection,
@@ -67,6 +70,7 @@ const SingleSelect = ({
               clearSelection={clearSelection}
               getToggleButtonProps={getToggleButtonProps}
               isClearable={isClearable}
+              isDisabled={isDisabled}
               isOpen={isOpen}
               selectedItem={selectedItem}
             />
@@ -77,6 +81,7 @@ const SingleSelect = ({
               getMenuProps={getMenuProps}
               highlightedIndex={highlightedIndex}
               inputValue={inputValue}
+              isDisabled={isDisabled}
               isOpen={isOpen}
               isSearchable={isSearchable}
               itemList={itemList}
